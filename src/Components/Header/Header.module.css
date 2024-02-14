@@ -1,0 +1,17 @@
+.header_component {
+  background-color: #4c260d;
+  padding: 0.8rem 1.6rem;
+}
+
+.header_section {
+  margin: 0 auto;
+  max-width: 120rem;
+  padding: 0 1.8rem;
+
+  font-size: 1.8rem;
+  color: #e4a97a;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
