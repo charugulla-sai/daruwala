@@ -1,0 +1,27 @@
+.explore_component {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.explore_section {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.image_box {
+  max-width: 58rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.image_box img {
+  width: 100%;
+}

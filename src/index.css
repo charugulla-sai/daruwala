@@ -4,7 +4,16 @@
   box-sizing: border-box;
 }
 
-html{
+html {
   font-size: 62.5%;
   font-family: sans-serif;
+}
+
+/* // <uniquifier>: Use a uniquifier for the class name
+// <weight>: Use a value from 400 to 900 */
+
+body {
+  font-family: 'Playfair Display', sans-serif;
+  font-optical-sizing: auto;
+  background-color: #e3dfda;
 }

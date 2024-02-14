@@ -1,9 +1,13 @@
+.slide_component {
+  margin-bottom: 4.8rem;
+}
+
 .slide_section {
   max-width: 100%;
 
   display: flex;
 
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .slide_section img {

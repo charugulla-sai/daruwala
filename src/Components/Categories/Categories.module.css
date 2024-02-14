@@ -1,0 +1,23 @@
+.categories_component {
+  margin-bottom: 6.4rem;
+}
+
+.categories_heading {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 2.8rem;
+  color: #311528;
+}
+
+.categories_section {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
