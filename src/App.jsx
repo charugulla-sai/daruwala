@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import Header from './Components/Header/Header';
+import './index.css'
 
 function App() {
-  return <>Hi</>;
+  return <><Header/></>
 }
 
 export default App;
