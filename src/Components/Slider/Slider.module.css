@@ -1,0 +1,14 @@
+.slide_section {
+  max-width: 100%;
+
+  display: flex;
+
+  /* overflow: hidden; */
+}
+
+.slide_section img {
+  transition: translate 0.3s ease-in-out;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+}
