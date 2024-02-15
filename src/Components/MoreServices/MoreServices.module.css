@@ -1,0 +1,23 @@
+.more_services_component {
+  margin-bottom: 6.4rem;
+}
+
+.more_services_heading {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 2.8rem;
+  color: #311528;
+}
+
+.more_services_section {
+  max-width: 120rem;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+}
