@@ -4,7 +4,10 @@ import whiskeyBarrelsImage from '../../Images/Featured/whiskeybarrel.jpg';
 
 function FeaturedWhiskeyProducts() {
   return (
-    <div className={styles.featured_products_component}>
+    <div
+      className={styles.featured_products_component}
+      style={{ marginBottom: '7.2rem' }}
+    >
       <div
         className={styles.featured_products_section}
         style={{

@@ -4,6 +4,8 @@
   gap: 2rem;
   justify-content: center;
   align-items: center;
+
+  margin-bottom: 3.2rem;
 }
 
 .explore_section {
@@ -24,4 +26,8 @@
 
 .image_box img {
   width: 100%;
+}
+
+.explore_title {
+  margin-bottom: 1.8rem;
 }
