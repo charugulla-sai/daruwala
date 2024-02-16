@@ -56,4 +56,9 @@
   background-color: #fff;
   border-radius: 1.8rem;
   padding: 0.8rem 1.6rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.types h4:hover {
+  transform: scale(1.1);
 }
