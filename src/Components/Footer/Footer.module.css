@@ -1,9 +1,27 @@
 .footer_component {
   display: flex;
   flex-direction: column;
-  background-color: #311528;
+  /* background-color: #311528; */
 
   color: #fff;
+  background-image: url('../../Images/Footer/backgroundimage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+  position: relative;
+}
+
+.footer_component::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.95;
+  background: #311528;
 }
 
 .footer_section {
@@ -16,6 +34,8 @@
   gap: 3.2rem;
   justify-content: space-between;
   padding: 4rem 2rem;
+
+  z-index: 1;
 }
 
 .main_footer_section {
@@ -46,6 +66,7 @@ li {
 }
 
 .copyright_component {
+  z-index: 1;
   background-color: #220f1c;
   opacity: 0.8;
   padding: 2.4rem 0;

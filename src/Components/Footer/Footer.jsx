@@ -41,13 +41,14 @@ function Footer() {
         </div>
       </div>
       <div className={styles.copyright_component}>
-
-      <div className={styles.copyright_section}>
-        <p className={styles.copyright}>
-          &copy;DARUWALA, 2024. ALL RIGHTS RESERVED.
-        </p>
-        <p className={styles.developed_by}>DEVELOPED BY <span>CHARUGULLA SAI</span></p>
-      </div>
+        <div className={styles.copyright_section}>
+          <p className={styles.copyright}>
+            &copy;DARUWALA, 2024. ALL RIGHTS RESERVED.
+          </p>
+          <p className={styles.developed_by}>
+            DEVELOPED BY <span>CHARUGULLA SAI</span>
+          </p>
+        </div>
       </div>
     </div>
   );
