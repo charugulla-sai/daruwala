@@ -1,5 +1,5 @@
 import styles from './Categories.module.css';
-import categoryImages from '../../Images/Categories/images.js';
+import categories from '../../Images/Categories/images.js';
 import Card from '../Card/Card.jsx';
 
 function Categories() {
@@ -9,8 +9,8 @@ function Categories() {
         <h2>CATEGORIES</h2>
       </div>
       <div className={styles.categories_section}>
-        {categoryImages.map((imageUrl) => (
-          <Card key={imageUrl} imageUrl={imageUrl} />
+        {categories.map((imageData) => (
+          <Card key={imageData.image} imageUrl={imageData.image} imageTitle={imageData.title}/>
         ))}
       </div>
     </div>

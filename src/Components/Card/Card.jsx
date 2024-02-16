@@ -1,6 +1,6 @@
 import styles from './Card.module.css';
 
-function Card({ imageUrl }) {
+function Card({ imageUrl, imageTitle }) {
   return (
     <div className={styles.card}>
       <div className={styles.image_box}>
@@ -11,7 +11,7 @@ function Card({ imageUrl }) {
         />
       </div>
       <div className={styles.card_title}>
-        <p>New Arrival</p>
+        <p>{imageTitle}</p>
       </div>
     </div>
   );

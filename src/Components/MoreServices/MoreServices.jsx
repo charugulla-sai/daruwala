@@ -5,7 +5,12 @@ import bartender from '../../Images/MoreServices/bartender.jpg';
 import Card from '../Card/Card.jsx';
 import styles from './MoreServices.module.css';
 
-const images = [wineImage, wineTypes, whiskey, bartender];
+const moreServicesData = [
+  { title: 'Wine FAQs', image: wineImage },
+  { title: 'Know Your Wine', image: wineTypes },
+  { title: 'Whiskypedia', image: whiskey },
+  { title: 'Book your bar tender', image: bartender },
+];
 
 function MoreServices() {
   return (
@@ -14,20 +19,16 @@ function MoreServices() {
         <h2>MORE SERVICES</h2>
       </div>
       <div className={styles.more_services_section}>
-        {images.map((imageUrl) => (
-          <Card key={imageUrl} imageUrl={imageUrl} />
+        {moreServicesData.map((imageData) => (
+          <Card
+            key={imageData.image}
+            imageUrl={imageData.image}
+            imageTitle={imageData.title}
+          />
         ))}
       </div>
     </div>
   );
 }
 
-// <div className={styles.more_services_container}>
-// <div className={styles.more_services_section}>
-
-//   {images.map((image) => (
-//     <Card key={image} imageUrl={image} />
-//   ))}
-// </div>
-// </div>
 export default MoreServices;
