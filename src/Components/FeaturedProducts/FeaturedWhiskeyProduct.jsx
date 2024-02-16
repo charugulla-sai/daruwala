@@ -6,13 +6,13 @@ function FeaturedWhiskeyProducts() {
   return (
     <div
       className={styles.featured_products_component}
-      style={{ marginBottom: '7.2rem' }}
+      style={{ marginBottom: '7.2rem', backgroundImage: `url(${whiskeyBarrelsImage})`,
+          backgroundSize: 'cover', }}
     >
       <div
         className={styles.featured_products_section}
         style={{
-          backgroundImage: `url(${whiskeyBarrelsImage})`,
-          backgroundSize: 'cover',
+         
         }}
       >
         <div className={styles.text_box}>

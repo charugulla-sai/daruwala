@@ -1,16 +1,15 @@
 import styles from './FeaturedProducts.module.css';
 import wineImage from '../../Images/Featured/wine.jpg';
-import whiskeyBarrelsImage from '../../Images/Featured/whiskeybarrel.jpg';
 
 function FeaturedWineProducts() {
   return (
-    <div className={styles.featured_products_component}>
-      <div
-        className={styles.featured_products_section}
-        style={{
-          backgroundImage: `linear-gradient(to left, #000000 40%, #00000000),url(${wineImage})`,
-        }}
-      >
+    <div
+      className={styles.featured_products_component}
+      style={{
+        backgroundImage: `linear-gradient(to left, #000000 40%, #00000000),url(${wineImage})`,
+      }}
+    >
+      <div className={styles.featured_products_section}>
         <div className={styles.text_box}>
           <div className={styles.heading}>
             <h2>Love for the wines</h2>
