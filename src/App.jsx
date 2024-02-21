@@ -7,18 +7,48 @@ import Header from './Components/Header/Header';
 import MoreServices from './Components/MoreServices/MoreServices';
 import Slider from './Components/Slider/Slider';
 import './index.css';
+import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: (
+        <>
+          <Header />
+          <Outlet />
+          <Footer />
+        </>
+      ),
+      children: [
+        {
+          index: true,
+          element: (
+            <>
+              <Slider />
+              <Categories />
+              <Explore />
+              <FeaturedWineProducts />
+              <FeaturedWhiskeyProducts />
+              <MoreServices />
+            </>
+          ),
+        },
+        {
+          path: 'signin',
+          element: (
+            <>
+              <h1>Hello signin</h1>
+            </>
+          ),
+        },
+      ],
+    },
+  ]);
+
   return (
     <>
-      <Header />
-      <Slider />
-      <Categories />
-      <Explore />
-      <FeaturedWineProducts />
-      <FeaturedWhiskeyProducts />
-      <MoreServices />
-      <Footer />
+      <RouterProvider router={router} />
     </>
   );
 }
