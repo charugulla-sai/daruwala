@@ -16,7 +16,6 @@ function Slider() {
         }
         return currentSliderImageIndex + slideDirection;
       });
-      console.log(currentSliderImageIndex);
     }, 5000);
     return () => clearInterval(timer);
   }, [currentSliderImageIndex]);

@@ -5,6 +5,7 @@ import FeaturedWineProducts from './Components/FeaturedProducts/FeaturedWineProd
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import MoreServices from './Components/MoreServices/MoreServices';
+import Signin from './Components/Signin/Signin';
 import Slider from './Components/Slider/Slider';
 import './index.css';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
@@ -36,11 +37,7 @@ function App() {
         },
         {
           path: 'signin',
-          element: (
-            <>
-              <h1>Hello signin</h1>
-            </>
-          ),
+          element: <Signin />,
         },
       ],
     },
