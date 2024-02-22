@@ -5,7 +5,7 @@
 
 .header_section {
   margin: 0 auto;
-  max-width: 120rem;
+  max-width: 130rem;
   padding: 0 1.8rem;
 
   font-size: 1.8rem;
@@ -14,4 +14,5 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* justify-content: center; */
 }
