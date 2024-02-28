@@ -28,9 +28,11 @@ function Signin() {
       }
     };
 
-    signin();
-    setSubmit(false);
-  }, [submit == true]);
+    if (submit) {
+      signin();
+      setSubmit(false);
+    }
+  }, [submit]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
