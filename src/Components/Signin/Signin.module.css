@@ -1,0 +1,87 @@
+.signin_component {
+  margin: 6.4rem 0;
+}
+
+.signin_section {
+  max-width: 64rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signin_heading {
+  margin-bottom: 1.8rem;
+}
+
+.signin_text {
+  margin-bottom: 2rem;
+}
+
+.input_box {
+  position: relative;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+label {
+  display: block;
+  font-size: 1.8rem;
+  padding: 0 1rem;
+  background-color: #e3dfda;
+  border-radius: 5px;
+  cursor: text;
+
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+
+  transition: all 0.3s ease-in-out;
+}
+
+input {
+  width: 42rem;
+  height: 4.8rem;
+  padding: 0 30px;
+  background: transparent;
+  outline: none;
+  border: 2px solid #3115287d;
+  transition: all 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+input:focus,
+input:valid {
+  color: #311528;
+  border: 2px solid #311528;
+}
+
+input:focus + label,
+input:valid + label {
+  color: #311528;
+  transform: translate(-15px, -35px) scale(0.8);
+
+  z-index: 2;
+}
+
+button {
+  /* max-width: fit-content; */
+  font-size: 1.8rem;
+  padding: 0.8rem 2.4rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

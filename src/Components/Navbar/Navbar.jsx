@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <div className={styles.nav_section}>
       <h3>
-        <Link className={styles.router_link} to="/signin">
+        <Link className='router_link' to="/signin">
           Signin
         </Link>
       </h3>

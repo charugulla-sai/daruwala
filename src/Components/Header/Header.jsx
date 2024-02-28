@@ -1,11 +1,16 @@
 import styles from './Header.module.css';
 import Navbar from '../Navbar/Navbar';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return (
     <div className={styles.header_component}>
       <div className={styles.header_section}>
-        <h1>Daruwala</h1>
+        <h1>
+          <Link className="router_link" to="/">
+            Daruwala
+          </Link>
+        </h1>
         <Navbar />
       </div>
     </div>
