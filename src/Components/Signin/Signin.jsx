@@ -15,7 +15,7 @@ function Signin() {
       try {
         setError(false);
         const response = await axios.post(
-          `${import.meta.env.VITE_REACT_APP_BACKEND_SERVER}/user/signin`,
+          `https://daruwala-backend.onrender.com/user/signin`,
           {
             email: email,
             password: password,
