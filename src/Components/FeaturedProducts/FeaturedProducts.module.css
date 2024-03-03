@@ -1,8 +1,8 @@
 .featured_products_component {
   /* margin-bottom: 3.2rem; */
   background-repeat: no-repeat;
-  background-position: left bottom;
-  background-size: contain;
+  background-position: left;
+  background-size: cover;
   background-attachment: fixed;
 }
 

@@ -6,15 +6,12 @@ function FeaturedWhiskeyProducts() {
   return (
     <div
       className={styles.featured_products_component}
-      style={{ marginBottom: '7.2rem', backgroundImage: `url(${whiskeyBarrelsImage})`,
-          backgroundSize: 'cover', }}
+      style={{
+        marginBottom: '7.2rem',
+        backgroundImage: `url(${whiskeyBarrelsImage})`,
+      }}
     >
-      <div
-        className={styles.featured_products_section}
-        style={{
-         
-        }}
-      >
+      <div className={styles.featured_products_section} style={{}}>
         <div className={styles.text_box}>
           <div className={styles.heading}>
             <h2>World of Whiskey</h2>
