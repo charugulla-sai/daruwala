@@ -14,10 +14,13 @@ function Signin() {
     const signin = async () => {
       try {
         setError(false);
-        const response = await axios.post('http://localhost:3000/user/signin', {
-          email: email,
-          password: password,
-        });
+        const response = await axios.post(
+          `${import.meta.env.VITE_REACT_APP_BACKEND_SERVER}/user/signin`,
+          {
+            email: email,
+            password: password,
+          }
+        );
         if (response.status !== 200) {
           throw new Error('Login attempt failed.');
         }
