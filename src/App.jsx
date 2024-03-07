@@ -5,6 +5,7 @@ import FeaturedWineProducts from './Components/FeaturedProducts/FeaturedWineProd
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import MoreServices from './Components/MoreServices/MoreServices';
+import ProductsComponent from './Components/Products/ProductsComponent/ProductsComponent';
 import Signin from './Components/Signin/Signin';
 import Slider from './Components/Slider/Slider';
 import './index.css';
@@ -38,6 +39,10 @@ function App() {
         {
           path: 'signin',
           element: <Signin />,
+        },
+        {
+          path: 'new_arrival',
+          element: <ProductsComponent />,
         },
       ],
     },

@@ -9,7 +9,11 @@
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
+
+  /* Below text decoration is for react router Link purpouse */
+  text-decoration: none;
 }
+
 .image_box {
   max-width: 100%;
   max-height: 100%;

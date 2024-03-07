@@ -1,0 +1,17 @@
+.products_component {
+  /* max-width: 120rem; */
+
+  padding: 1.2rem 2.4rem;
+}
+
+.products_section {
+  max-width: 120rem;
+  /* height: 100%; */
+  margin: 0 auto;
+  /* background-color: red; */
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}

@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import styles from './Card.module.css';
 
 function Card({ imageUrl, imageTitle }) {
   return (
-    <div className={styles.card}>
+    <Link to="new_arrival" className={styles.card}>
       <div className={styles.image_box}>
         <img
           className={styles.card_image}
@@ -13,7 +14,7 @@ function Card({ imageUrl, imageTitle }) {
       <div className={styles.card_title}>
         <p>{imageTitle}</p>
       </div>
-    </div>
+    </Link>
   );
 }
 
