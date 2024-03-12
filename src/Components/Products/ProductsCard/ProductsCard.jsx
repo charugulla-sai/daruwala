@@ -1,3 +1,4 @@
+import { useCartValues } from '../../../Context/CartContext';
 import styles from './ProductsCard.module.css';
 
 function ProductCard({
@@ -7,6 +8,8 @@ function ProductCard({
   productSize,
   productType
 }) {
+  const {addCartItems} = useCartValues()
+
   return (
     <div className={styles.product_card}>
       <div className={styles.product_section}>
@@ -22,7 +25,7 @@ function ProductCard({
           <p className={styles.product_size}>{productSize}ML</p>
           <div className={styles.price_and_cart_box}>
             <p className={styles.product_price}>&#x20B9;{productPrice}</p>
-            <button className={styles.add_to_cart}>Add to Cart</button>
+            <button onClick={addCartItems} className={styles.add_to_cart}>Add to Cart</button>
           </div>
         </div>
       </div>

@@ -50,7 +50,6 @@ const products = [
     size: 750,
     price: 5899.41,
   },
-  
 ];
 
 export default function ProductsComponent() {
@@ -59,6 +58,7 @@ export default function ProductsComponent() {
       <div className={styles.products_section}>
         {products.map((product) => (
           <ProductCard
+            key={product.image}
             productImage={product.image}
             productTitle={product.title}
             productPrice={product.price}

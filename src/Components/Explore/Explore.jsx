@@ -9,7 +9,7 @@ export default function Explore() {
       </div>
       <div className={styles.explore_section}>
         {exploreImages.map((image) => (
-          <div className={styles.image_box}>
+          <div key={image} className={styles.image_box}>
             <img src={image} alt="explore image" />
           </div>
         ))}

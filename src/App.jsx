@@ -8,6 +8,7 @@ import MoreServices from './Components/MoreServices/MoreServices';
 import ProductsComponent from './Components/Products/ProductsComponent/ProductsComponent';
 import Signin from './Components/Signin/Signin';
 import Slider from './Components/Slider/Slider';
+import CartContext from './Context/CartContext';
 import './index.css';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
@@ -49,9 +50,9 @@ function App() {
   ]);
 
   return (
-    <>
+    <CartContext>
       <RouterProvider router={router} />
-    </>
+    </CartContext>
   );
 }
 
