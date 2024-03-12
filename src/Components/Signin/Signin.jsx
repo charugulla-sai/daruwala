@@ -24,6 +24,7 @@ function Signin() {
         if (response.status !== 200) {
           throw new Error('Login attempt failed.');
         }
+        localStorage.setItem('auth-token', response.data);
         navigate('/');
       } catch (err) {
         setError(true);

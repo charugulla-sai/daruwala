@@ -78,6 +78,7 @@ export default function ProductsComponent() {
         {products.map((product) => (
           <ProductCard
             key={product.image}
+            productId={product._id}
             productImage={product.image}
             productTitle={product.title}
             productPrice={product.price}
