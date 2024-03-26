@@ -14,14 +14,11 @@ function CartContext({ children }) {
 
   useEffect(() => {
     async function getAllCartItems() {
-      const allCartItems = await axios.get(
-        'https://daruwala-backend.onrender.com/api/cart/',
-        {
-          headers: {
-            Authorization: localStorage.getItem('auth-token'),
-          },
-        }
-      );
+      const allCartItems = await axios.get('http://localhost:3000/api/cart/', {
+        headers: {
+          Authorization: localStorage.getItem('auth-token'),
+        },
+      });
       setCartItems([...allCartItems.data]);
     }
     getAllCartItems();
@@ -31,7 +28,7 @@ function CartContext({ children }) {
     try {
       // add item to cart using the api
       await axios.post(
-        `https://daruwala-backend.onrender.com/api/cart/`,
+        `http://localhost:3000/api/cart/`,
         { productId: productId },
         {
           headers: {
@@ -39,8 +36,8 @@ function CartContext({ children }) {
           },
         }
       );
-      
-      setClickedOnAddToCart(!clickedOnAddToCart)
+
+      setClickedOnAddToCart(!clickedOnAddToCart);
     } catch (err) {
       console.log(err);
     }

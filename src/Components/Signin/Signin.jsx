@@ -14,17 +14,14 @@ function Signin() {
     const signin = async () => {
       try {
         setError(false);
-        const response = await axios.post(
-          `https://daruwala-backend.onrender.com/user/signin`,
-          {
-            email: email,
-            password: password,
-          }
-        );
+        const response = await axios.post(`http://localhost:3000/user/signin`, {
+          email: email,
+          password: password,
+        });
         if (response.status !== 200) {
           throw new Error('Login attempt failed.');
         }
-        localStorage.setItem('auth-token', response.data);
+        localStorage.setItem('auth-token', response.data.access_token);
         navigate('/');
       } catch (err) {
         setError(true);
