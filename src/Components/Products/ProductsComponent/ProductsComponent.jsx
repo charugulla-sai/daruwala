@@ -33,6 +33,7 @@ export default function ProductsComponent() {
             productPrice={product.price}
             productSize={product.size}
             productType={product.type}
+            inCartPage = {false}
           />
         ))}
       </div>

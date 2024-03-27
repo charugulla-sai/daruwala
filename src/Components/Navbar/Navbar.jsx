@@ -13,7 +13,9 @@ function Navbar() {
         </Link>
       </h3>
       <h3>
-        Cart <span>{cartItems.length}</span>
+        <Link className="router_link" to="/cart">
+          Cart <span>{cartItems.length}</span>
+        </Link>
       </h3>
     </div>
   );

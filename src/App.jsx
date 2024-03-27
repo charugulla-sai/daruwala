@@ -1,3 +1,4 @@
+import CartComponent from './Components/Cart/CartComponent/CartComponent';
 import Categories from './Components/Categories/Categories';
 import Explore from './Components/Explore/Explore';
 import FeaturedWhiskeyProducts from './Components/FeaturedProducts/FeaturedWhiskeyProduct';
@@ -45,6 +46,7 @@ function App() {
           path: 'new_arrival',
           element: <ProductsComponent />,
         },
+        { path: 'cart', element: <CartComponent /> },
       ],
     },
   ]);

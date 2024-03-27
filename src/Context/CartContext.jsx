@@ -10,7 +10,7 @@ function useCartValues() {
 
 function CartContext({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [clickedOnAddToCart, setClickedOnAddToCart] = useState(false);
+  const [clickedOnAddOrRemoveToCart, setClickedOnAddOrRemoveToCart] = useState(false);
 
   useEffect(() => {
     async function getAllCartItems() {
@@ -22,7 +22,7 @@ function CartContext({ children }) {
       setCartItems([...allCartItems.data]);
     }
     getAllCartItems();
-  }, [clickedOnAddToCart]);
+  }, [clickedOnAddOrRemoveToCart]);
 
   const addItemToCart = async (productId) => {
     try {
@@ -37,14 +37,27 @@ function CartContext({ children }) {
         }
       );
 
-      setClickedOnAddToCart(!clickedOnAddToCart);
+      setClickedOnAddOrRemoveToCart(!clickedOnAddOrRemoveToCart);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteItemFromCart = async (productId) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/cart/${productId}`, {
+        headers: {
+          Authorization: localStorage.getItem('auth-token'),
+        },
+      });
+      setClickedOnAddOrRemoveToCart(!clickedOnAddOrRemoveToCart);
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <cartContext.Provider value={{ cartItems, addItemToCart }}>
+    <cartContext.Provider value={{ cartItems, addItemToCart,deleteItemFromCart }}>
       {children}
     </cartContext.Provider>
   );
