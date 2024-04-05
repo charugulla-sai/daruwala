@@ -2,38 +2,11 @@ import { useEffect, useState } from 'react';
 import styles from './Signin.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useUserContextValues } from '../../Context/UserContext';
 
 function Signin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(false);
-  const [submit, setSubmit] = useState(false);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const signin = async () => {
-      try {
-        setError(false);
-        const response = await axios.post(`http://localhost:3000/user/signin`, {
-          email: email,
-          password: password,
-        });
-        if (response.status !== 200) {
-          throw new Error('Login attempt failed.');
-        }
-        localStorage.setItem('auth-token', response.data.access_token);
-        navigate('/');
-      } catch (err) {
-        setError(true);
-        console.log(error, err.message);
-      }
-    };
-
-    if (submit) {
-      signin();
-      setSubmit(false);
-    }
-  }, [submit]);
+  const { error, setSubmit, email, setEmail, password, setPassword } =
+    useUserContextValues();
 
   const handleSubmit = (e) => {
     e.preventDefault();

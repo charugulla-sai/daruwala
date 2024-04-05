@@ -1,5 +1,6 @@
 import axios, { all } from 'axios';
 import { useState, createContext, useContext, useEffect } from 'react';
+import { useUserContextValues } from './UserContext';
 
 const cartContext = createContext();
 
@@ -10,19 +11,24 @@ function useCartValues() {
 
 function CartContext({ children }) {
   const [cartItems, setCartItems] = useState([]);
-  const [clickedOnAddOrRemoveToCart, setClickedOnAddOrRemoveToCart] = useState(false);
+  const [clickedOnAddOrRemoveToCart, setClickedOnAddOrRemoveToCart] =
+    useState(false);
+  const { userLoggedIn } = useUserContextValues();
 
   useEffect(() => {
-    async function getAllCartItems() {
-      const allCartItems = await axios.get('http://localhost:3000/api/cart/', {
-        headers: {
-          Authorization: localStorage.getItem('auth-token'),
-        },
-      });
-      setCartItems([...allCartItems.data]);
+    if (userLoggedIn) {
+      getAllCartItems();
     }
-    getAllCartItems();
-  }, [clickedOnAddOrRemoveToCart]);
+  }, [clickedOnAddOrRemoveToCart, userLoggedIn]);
+
+  async function getAllCartItems() {
+    const allCartItems = await axios.get('http://localhost:3000/api/cart/', {
+      headers: {
+        Authorization: localStorage.getItem('auth-token'),
+      },
+    });
+    setCartItems([...allCartItems.data]);
+  }
 
   const addItemToCart = async (productId) => {
     try {
@@ -57,7 +63,9 @@ function CartContext({ children }) {
   };
 
   return (
-    <cartContext.Provider value={{ cartItems, addItemToCart,deleteItemFromCart }}>
+    <cartContext.Provider
+      value={{ cartItems, addItemToCart, deleteItemFromCart }}
+    >
       {children}
     </cartContext.Provider>
   );

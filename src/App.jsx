@@ -10,51 +10,38 @@ import ProductsComponent from './Components/Products/ProductsComponent/ProductsC
 import Signin from './Components/Signin/Signin';
 import Slider from './Components/Slider/Slider';
 import CartContext from './Context/CartContext';
+import UserContext from './Context/UserContext';
 import './index.css';
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: (
-        <>
-          <Header />
-          <Outlet />
-          <Footer />
-        </>
-      ),
-      children: [
-        {
-          index: true,
-          element: (
-            <>
-              <Slider />
-              <Categories />
-              <Explore />
-              <FeaturedWineProducts />
-              <FeaturedWhiskeyProducts />
-              <MoreServices />
-            </>
-          ),
-        },
-        {
-          path: 'signin',
-          element: <Signin />,
-        },
-        {
-          path: 'new_arrival',
-          element: <ProductsComponent />,
-        },
-        { path: 'cart', element: <CartComponent /> },
-      ],
-    },
-  ]);
-
   return (
-    <CartContext>
-      <RouterProvider router={router} />
-    </CartContext>
+    <Router>
+      <UserContext>
+        <CartContext>
+          <Header />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <>
+                  <Slider />
+                  <Categories />
+                  <Explore />
+                  <FeaturedWineProducts />
+                  <FeaturedWhiskeyProducts />
+                  <MoreServices />
+                </>
+              }
+            />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/new_arrival" element={<ProductsComponent />} />
+            <Route path="/cart" element={<CartComponent />} />
+          </Routes>
+          <Footer/>
+        </CartContext>
+      </UserContext>
+    </Router>
   );
 }
 
