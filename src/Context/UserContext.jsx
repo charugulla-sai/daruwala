@@ -45,16 +45,21 @@ export default function UserContext({ children }) {
     }
   }, [submit]);
 
-  // if (!userLoggedIn) {
-  //   return <Navigate to="/" />;
-  // }
+  useEffect(() => {
+    if (!userLoggedIn) {
+      navigate('/signin');
+    }
+    // return()=>console.log('navigation cleared');
+  }, [userLoggedIn]);
+
 
   return (
     <userContext.Provider
       value={{
         userLoggedIn,
         setUserLoggedIn,
-        error,submit,
+        error,
+        submit,
         setSubmit,
         email,
         setEmail,
