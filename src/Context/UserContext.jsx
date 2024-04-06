@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Signin from '../Components/Signin/Signin';
 import axios from 'axios';
 
@@ -17,6 +17,7 @@ export default function UserContext({ children }) {
   const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const signin = async () => {
@@ -32,7 +33,7 @@ export default function UserContext({ children }) {
         setUserLoggedIn(true);
         localStorage.setItem('auth-token', response.data.access_token);
         localStorage.setItem('isUserLoggedIn', true);
-        navigate('/');
+        // navigate('/');
       } catch (err) {
         setError(true);
         console.log(error, err.message);
@@ -46,12 +47,22 @@ export default function UserContext({ children }) {
   }, [submit]);
 
   useEffect(() => {
+    navigate('/');
     if (!userLoggedIn) {
       navigate('/signin');
     }
     // return()=>console.log('navigation cleared');
   }, [userLoggedIn]);
 
+  useEffect(() => {
+    // Check if the current route path is the one where you want to disable the back button
+    if (location.pathname === '/' || location.pathname === '/signin') {
+      window.history.pushState(null, document.title, window.location.href);
+      window.addEventListener('popstate', () => {
+        window.history.pushState(null, document.title, window.location.href);
+      });
+    }
+  }, [location]);
 
   return (
     <userContext.Provider
