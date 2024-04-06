@@ -23,15 +23,17 @@ function Navbar() {
           <Link className="router_link" to="/cart">
             Cart <span>{cartItems.length}</span>
           </Link>
-          <p
+        </h3>
+      )}
+      {userLoggedIn && (
+        <h3
             className="router_link"
             onClick={() => {
               setUserLoggedIn(false);
             }}
           >
             Logout
-          </p>
-        </h3>
+          </h3>
       )}
     </div>
   );

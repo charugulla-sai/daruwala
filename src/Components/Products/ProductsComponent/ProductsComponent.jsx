@@ -10,7 +10,7 @@ export default function ProductsComponent() {
     const getProducts = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/api/products/'
+          `${import.meta.env.VITE_BACKEND_SERVER}/api/products/`
         );
         setProducts([...products, ...response.data]);
       } catch (err) {
@@ -33,7 +33,7 @@ export default function ProductsComponent() {
             productPrice={product.price}
             productSize={product.size}
             productType={product.type}
-            inCartPage = {false}
+            inCartPage={false}
           />
         ))}
       </div>

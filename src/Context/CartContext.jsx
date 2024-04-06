@@ -22,7 +22,7 @@ function CartContext({ children }) {
   }, [clickedOnAddOrRemoveToCart, userLoggedIn]);
 
   async function getAllCartItems() {
-    const allCartItems = await axios.get('http://localhost:3000/api/cart/', {
+    const allCartItems = await axios.get(`${import.meta.env.VITE_BACKEND_SERVER}/api/cart/`, {
       headers: {
         Authorization: localStorage.getItem('auth-token'),
       },
@@ -34,7 +34,7 @@ function CartContext({ children }) {
     try {
       // add item to cart using the api
       await axios.post(
-        `http://localhost:3000/api/cart/`,
+        `${import.meta.env.VITE_BACKEND_SERVER}/api/cart/`,
         { productId: productId },
         {
           headers: {
@@ -51,7 +51,7 @@ function CartContext({ children }) {
 
   const deleteItemFromCart = async (productId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/cart/${productId}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_SERVER}/api/cart/${productId}`, {
         headers: {
           Authorization: localStorage.getItem('auth-token'),
         },
