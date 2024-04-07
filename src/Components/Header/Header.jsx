@@ -9,7 +9,7 @@ function Header() {
     <div className={styles.header_component}>
       <div className={styles.header_section}>
         <h1>
-          <Link className="router_link" to={userLoggedIn ? '/' : '/signin'}>
+          <Link className="router_link" to='/'>
             Daruwala
           </Link>
         </h1>
