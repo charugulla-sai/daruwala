@@ -10,6 +10,7 @@ import ProductsComponent from './Components/Products/ProductsComponent/ProductsC
 import Signin from './Components/Signin/Signin';
 import Slider from './Components/Slider/Slider';
 import CartContext from './Context/CartContext';
+import { ProtectedRoute } from './Context/ProtectedRoute';
 import UserContext from './Context/UserContext';
 import './index.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -36,7 +37,7 @@ function App() {
             />
             <Route path="/signin" element={<Signin />} />
             <Route path="/new_arrival" element={<ProductsComponent />} />
-            <Route path="/cart" element={<CartComponent />} />
+            <Route path="/cart" element={<ProtectedRoute><CartComponent /></ProtectedRoute>} />
           </Routes>
           <Footer/>
         </CartContext>

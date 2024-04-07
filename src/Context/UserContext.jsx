@@ -50,12 +50,12 @@ export default function UserContext({ children }) {
     }
   }, [submit]);
 
-  useEffect(() => {
-    if (!userLoggedIn) {
-      navigate('/signin');
-    }
-    // return()=>console.log('navigation cleared');
-  }, [userLoggedIn]);
+  // useEffect(() => {
+  //   if (!userLoggedIn) {
+  //     navigate('/signin');
+  //   }
+  //   // return()=>console.log('navigation cleared');
+  // }, [userLoggedIn]);
 
   useEffect(() => {
     // Check if the current route path is the one where you want to disable the back button
