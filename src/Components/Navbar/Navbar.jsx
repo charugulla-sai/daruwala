@@ -27,13 +27,14 @@ function Navbar() {
       )}
       {userLoggedIn && (
         <h3
-            className="router_link"
-            onClick={() => {
-              setUserLoggedIn(false);
-            }}
-          >
-            Logout
-          </h3>
+          className="router_link"
+          onClick={() => {
+            localStorage.removeItem('auth-token');
+            setUserLoggedIn(localStorage.getItem('auth-token'));
+          }}
+        >
+          Logout
+        </h3>
       )}
     </div>
   );

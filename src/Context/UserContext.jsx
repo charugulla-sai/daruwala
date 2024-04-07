@@ -10,7 +10,9 @@ export function useUserContextValues() {
 }
 
 export default function UserContext({ children }) {
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(
+    localStorage.getItem('auth-token')
+  );
   const [error, setError] = useState(false);
   const [submit, setSubmit] = useState(false);
   const [email, setEmail] = useState('');
@@ -33,10 +35,9 @@ export default function UserContext({ children }) {
         if (response.status !== 200) {
           throw new Error('Login attempt failed.');
         }
-        setUserLoggedIn(true);
         localStorage.setItem('auth-token', response.data.access_token);
-        localStorage.setItem('isUserLoggedIn', true);
-        // navigate('/');
+        setUserLoggedIn(localStorage.getItem('auth-token'));
+        navigate('/');
       } catch (err) {
         setError(true);
         console.log(error, err.message);
@@ -50,7 +51,6 @@ export default function UserContext({ children }) {
   }, [submit]);
 
   useEffect(() => {
-    navigate('/');
     if (!userLoggedIn) {
       navigate('/signin');
     }
