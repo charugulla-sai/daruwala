@@ -1,5 +1,7 @@
 import { useCartValues } from '../../../Context/CartContext';
+import { useUserContextValues } from '../../../Context/UserContext';
 import styles from './ProductsCard.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function ProductCard({
   productId,
@@ -12,6 +14,8 @@ function ProductCard({
   inCartPage,
 }) {
   const { addItemToCart, deleteItemFromCart } = useCartValues();
+  const { userLoggedIn } = useUserContextValues();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.product_card}>
@@ -29,10 +33,14 @@ function ProductCard({
             {productQuantity && <p>qty:{productQuantity}</p>}
             <button
               onClick={() => {
-                if (inCartPage) {
-                  deleteItemFromCart(productId);
+                if (userLoggedIn) {
+                  if (inCartPage) {
+                    deleteItemFromCart(productId);
+                  } else {
+                    addItemToCart(productId);
+                  }
                 } else {
-                  addItemToCart(productId);
+                  navigate('/signin');
                 }
               }}
               className={styles.add_to_cart}
