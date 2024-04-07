@@ -14,8 +14,7 @@ function ProductCard({
   inCartPage,
 }) {
   const { addItemToCart, deleteItemFromCart } = useCartValues();
-  const { userLoggedIn } = useUserContextValues();
-  const navigate = useNavigate();
+  const { verify } = useUserContextValues();
 
   return (
     <div className={styles.product_card}>
@@ -33,14 +32,12 @@ function ProductCard({
             {productQuantity && <p>qty:{productQuantity}</p>}
             <button
               onClick={() => {
-                if (userLoggedIn) {
+                if (verify()) {
                   if (inCartPage) {
                     deleteItemFromCart(productId);
                   } else {
                     addItemToCart(productId);
                   }
-                } else {
-                  navigate('/signin');
                 }
               }}
               className={styles.add_to_cart}

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
-import Signin from '../Components/Signin/Signin';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const userContext = createContext();
 
@@ -67,6 +67,24 @@ export default function UserContext({ children }) {
     }
   }, [location]);
 
+  const verify = () => {
+    const authToken = localStorage.getItem('auth-token');
+    if (authToken) {
+      const decodeToken = jwtDecode(authToken);
+      const { exp } = decodeToken;
+      const currentTime = new Date().getTime();
+      if (exp * 1000 < currentTime) {
+        localStorage.removeItem('auth-token');
+        console.log(exp * 1000 - currentTime);
+        navigate('/signin');
+      }
+    } else {
+      navigate('/signin');
+    }
+    setUserLoggedIn(localStorage.getItem('auth-token'));
+    return userLoggedIn;
+  };
+
   return (
     <userContext.Provider
       value={{
@@ -79,6 +97,7 @@ export default function UserContext({ children }) {
         setEmail,
         password,
         setPassword,
+        verify,
       }}
     >
       {children}
