@@ -1,7 +1,5 @@
 {
-  "routes": [
-    { "src": "/", "dest": "/" },
-    { "src": "/new_arrival", "dest": "/new_arrival" },
-    { "src": "/cart", "dest": "/cart" }
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
   ]
 }
