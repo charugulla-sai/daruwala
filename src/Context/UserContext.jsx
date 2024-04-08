@@ -20,9 +20,12 @@ export default function UserContext({ children }) {
     localStorage.getItem('auth-token')
   );
   const [error, setError] = useState(false);
-  const [submit, setSubmit] = useState(false);
+  const [signInSubmit, setSignInSubmit] = useState(false);
+  const [signUpSubmit, setSignUpSubmit] = useState(false);
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [selector, setSelector] = useState('');
   const [verifyingUser, setVerifyingUser] = useState(false);
 
   const navigate = useNavigate();
@@ -53,12 +56,40 @@ export default function UserContext({ children }) {
         setVerifyingUser(false);
       }
     };
+    const signUp = async () => {
+      try {
+        setVerifyingUser(true);
+        setError(false);
+        const response = await axios.post(
+          `${import.meta.env.VITE_BACKEND_SERVER}/user/signup`,
+          {
+            name: name,
+            email: email,
+            password: password,
+            type: selector,
+          }
+        );
+        if (response.status !== 201) {
+          throw new Error('Signup attempt failed.');
+        }
+        navigate('/signin');
+      } catch (err) {
+        setError(true);
+        console.log(error, err.message);
+      } finally {
+        setVerifyingUser(false);
+      }
+    };
 
-    if (submit) {
+    if (signInSubmit) {
       signin();
-      setSubmit(false);
+      setSignInSubmit(false);
     }
-  }, [submit]);
+    if (signUpSubmit) {
+      signUp();
+      setSignUpSubmit(false);
+    }
+  }, [signInSubmit, signUpSubmit]);
 
   // useEffect(() => {
   //   if (!userLoggedIn) {
@@ -107,13 +138,18 @@ export default function UserContext({ children }) {
         verifyingUser,
         setUserLoggedIn,
         error,
-        submit,
-        setSubmit,
+        signInSubmit,
+        setSignInSubmit,
+        signUpSubmit,
+        setSignUpSubmit,
         email,
         setEmail,
         password,
         setPassword,
         verify,
+        name,
+        setName,
+        setSelector,
       }}
     >
       {children}

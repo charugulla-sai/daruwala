@@ -10,21 +10,21 @@ function Navbar() {
 
   return (
     <div className={styles.nav_section}>
-      <h3>
+      
+      {userLoggedIn ? (
+        <h3>
+          <Link className="router_link" to="/cart">
+            Cart <span>{cartItems.length}</span>
+          </Link>
+        </h3>
+      ):<h3>
         <Link
           className="router_link"
           to={pathTracker == 'signin' ? 'signup' : 'signin'}
         >
           {pathTracker == 'signin' ? 'SignUp' : 'SignIn'}
         </Link>
-      </h3>
-      {userLoggedIn && (
-        <h3>
-          <Link className="router_link" to="/cart">
-            Cart <span>{cartItems.length}</span>
-          </Link>
-        </h3>
-      )}
+      </h3>}
       {userLoggedIn && (
         <h3
           className="router_link"

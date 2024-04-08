@@ -8,6 +8,7 @@ import Header from './Components/Header/Header';
 import MoreServices from './Components/MoreServices/MoreServices';
 import ProductsComponent from './Components/Products/ProductsComponent/ProductsComponent';
 import Signin from './Components/Signin/Signin';
+import SignUp from './Components/Signup/Signup';
 import Slider from './Components/Slider/Slider';
 import CartContext from './Context/CartContext';
 import { ProtectedRoute } from './Context/ProtectedRoute';
@@ -36,6 +37,7 @@ function App() {
               }
             />
             <Route path="/signin" element={<Signin />} />
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/new_arrival" element={<ProductsComponent />} />
             <Route path="/cart" element={<ProtectedRoute><CartComponent /></ProtectedRoute>} />
           </Routes>

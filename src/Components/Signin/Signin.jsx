@@ -7,7 +7,7 @@ import { useUserContextValues } from '../../Context/UserContext';
 function Signin() {
   const {
     error,
-    setSubmit,
+    setSignInSubmit,
     email,
     setEmail,
     password,
@@ -17,17 +17,17 @@ function Signin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmit(true);
+    setSignInSubmit(true);
   };
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    setSubmit(false);
+    setSignInSubmit(false);
   };
 
   const handlePassword = (e) => {
     setPassword(e.target.value);
-    setSubmit(false);
+    setSignInSubmit(false);
   };
 
   return (
