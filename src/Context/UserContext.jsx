@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
@@ -57,15 +63,20 @@ export default function UserContext({ children }) {
   //   // return()=>console.log('navigation cleared');
   // }, [userLoggedIn]);
 
+  const handlePopState = useCallback(() => {
+    window.history.pushState(null, document.title, window.location.href);
+    console.log('popstate');
+  });
+
   useEffect(() => {
     // Check if the current route path is the one where you want to disable the back button
     if (location.pathname === '/' || location.pathname === '/signin') {
       window.history.pushState(null, document.title, window.location.href);
-      window.addEventListener('popstate', () => {
-        window.history.pushState(null, document.title, window.location.href);
-      });
+      window.addEventListener('popstate', handlePopState);
     }
-  }, [location]);
+
+    return ()=>window.removeEventListener('popstate', handlePopState)
+  }, [location, handlePopState]);
 
   const verify = () => {
     const authToken = localStorage.getItem('auth-token');
