@@ -5,8 +5,15 @@ import { useNavigate } from 'react-router-dom';
 import { useUserContextValues } from '../../Context/UserContext';
 
 function Signin() {
-  const { error, setSubmit, email, setEmail, password, setPassword } =
-    useUserContextValues();
+  const {
+    error,
+    setSubmit,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    verifyingUser,
+  } = useUserContextValues();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,8 +58,10 @@ function Signin() {
             />
             <label htmlFor="password">Enter Password</label>
           </div>
-          {error && <p>Email or password incorrect.</p>}
-          <button type="submit">Submit</button>
+          {error && <p style={{color:'red'}}>Email or password incorrect.</p>}
+          <button type="submit" disabled={verifyingUser?true:false}>
+            {verifyingUser? <span className={styles.loader}></span>: 'Submit'}
+          </button>
         </form>
       </div>
     </div>

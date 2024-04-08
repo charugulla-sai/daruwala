@@ -23,6 +23,7 @@ export default function UserContext({ children }) {
   const [submit, setSubmit] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [verifyingUser, setVerifyingUser] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,6 +31,7 @@ export default function UserContext({ children }) {
   useEffect(() => {
     const signin = async () => {
       try {
+        setVerifyingUser(true);
         setError(false);
         const response = await axios.post(
           `${import.meta.env.VITE_BACKEND_SERVER}/user/signin`,
@@ -47,6 +49,8 @@ export default function UserContext({ children }) {
       } catch (err) {
         setError(true);
         console.log(error, err.message);
+      } finally {
+        setVerifyingUser(false);
       }
     };
 
@@ -75,7 +79,7 @@ export default function UserContext({ children }) {
       window.addEventListener('popstate', handlePopState);
     }
 
-    return ()=>window.removeEventListener('popstate', handlePopState)
+    return () => window.removeEventListener('popstate', handlePopState);
   }, [location, handlePopState]);
 
   const verify = () => {
@@ -100,6 +104,7 @@ export default function UserContext({ children }) {
     <userContext.Provider
       value={{
         userLoggedIn,
+        verifyingUser,
         setUserLoggedIn,
         error,
         submit,
