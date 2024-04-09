@@ -58,7 +58,9 @@ function Signin() {
             />
             <label htmlFor="password">Enter Password</label>
           </div>
-          {error && <p style={{color:'red'}}>Email or password incorrect.</p>}
+          {error && (
+            <p style={{ color: 'red' }}>{error}</p>
+          )}
           <button type="submit" disabled={verifyingUser?true:false}>
             {verifyingUser? <span className={styles.loader}></span>: 'Submit'}
           </button>

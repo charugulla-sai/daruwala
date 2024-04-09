@@ -50,8 +50,8 @@ export default function UserContext({ children }) {
         setUserLoggedIn(localStorage.getItem('auth-token'));
         navigate('/');
       } catch (err) {
-        setError(true);
-        console.log(error, err.message);
+        setError(err.response.data.err);
+        console.log(err.message);
       } finally {
         setVerifyingUser(false);
       }
@@ -74,8 +74,8 @@ export default function UserContext({ children }) {
         }
         navigate('/signin');
       } catch (err) {
-        setError(true);
-        console.log(error, err.message);
+        setError(err.response.data.err);
+        console.log(err.message);
       } finally {
         setVerifyingUser(false);
       }

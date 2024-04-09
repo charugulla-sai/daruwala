@@ -21,7 +21,6 @@ function SignUp() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSignUpSubmit(true);
-    console.log('hi');
   };
 
   const handleEmail = (e) => {
@@ -89,7 +88,7 @@ function SignUp() {
             </select>
           </div>
           {error && (
-            <p style={{ color: 'red' }}>Email or password incorrect.</p>
+            <p style={{ color: 'red' }}>{error}</p>
           )}
           <button type="submit" disabled={verifyingUser ? true : false}>
             {verifyingUser ? <span className={styles.loader}></span> : 'Submit'}
