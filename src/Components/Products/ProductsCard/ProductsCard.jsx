@@ -43,7 +43,7 @@ function ProductCard({
               }}
               className={styles.add_to_cart}
             >
-              {inCartPage == true ? 'Delete' : 'Add to Cart'}
+              {inCartPage == true ? 'Remove' : 'Add to Cart'}
             </button>
           </div>
         </div>

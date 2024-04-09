@@ -30,7 +30,7 @@ function Navbar() {
       ) : (
         <h3>
           <Link
-            className="router_link"
+            className={styles.router_link}
             to={pathTracker == 'signin' ? 'signup' : 'signin'}
           >
             {pathTracker == 'signin' ? 'SignUp' : 'SignIn'}
