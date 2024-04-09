@@ -73,7 +73,7 @@ li {
 }
 
 .copyright_section {
-  width: 120rem;
+  max-width :120rem;
   margin: 0 auto;
   padding: 0 1.8rem;
 
