@@ -65,6 +65,12 @@ input:valid {
   border: 2px solid #311528;
 }
 
+select:focus,
+select:valid {
+  color: #311528;
+  border: 2px solid #311528;
+}
+
 input:focus + label,
 input:valid + label {
   color: #311528;
@@ -73,8 +79,17 @@ input:valid + label {
   z-index: 2;
 }
 
+select:focus + label,
+select:valid + label {
+  color: #311528;
+  transform: translate(-15px, -35px) scale(0.8);
+
+  z-index: 29;
+}
+
 .selector_container {
   display: flex;
+  position: relative;
 }
 
 .selector_box {
@@ -87,6 +102,8 @@ input:valid + label {
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
   font-size: 1.8rem;
+  z-index: 10;
+  
 }
 
 button {

@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './Signup.module.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useUserContextValues } from '../../Context/UserContext';
 
 function SignUp() {
+  const selectRef = useRef(null);
   const {
     error,
     setSignUpSubmit,
@@ -17,6 +18,8 @@ function SignUp() {
     verifyingUser,
     setSelector,
   } = useUserContextValues();
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,9 +40,16 @@ function SignUp() {
     setPassword(e.target.value);
     setSignUpSubmit(false);
   };
+
   const handleSelect = (e) => {
     setSelector(e.target.value);
     setSignUpSubmit(false);
+  };
+
+  const handleSelectLabelClick = () => {
+    if (selectRef.current) {
+      selectRef.current.click();
+    }
   };
 
   return (
@@ -82,11 +92,22 @@ function SignUp() {
             <label htmlFor="password">Enter Password</label>
           </div>
           <div className={styles.selector_container}>
-            <select className={styles.selector_box} onChange={handleSelect} required>
-              <option value='' selected></option>
+            <select
+              id="mySelect"
+              name="options"
+              defaultValue={''}
+              className={styles.selector_box}
+              onChange={handleSelect}
+              ref={selectRef}
+              required
+            >
+              <option value=""></option>
               <option value="Customer">Customer</option>
               <option value="Seller">Seller</option>
             </select>
+            <label htmlFor="mySelect" onClick={handleSelectLabelClick}>
+              Enter Password
+            </label>
           </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <button type="submit" disabled={verifyingUser ? true : false}>
