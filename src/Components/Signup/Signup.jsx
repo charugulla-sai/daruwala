@@ -93,7 +93,7 @@ function SignUp() {
               <option value="Customer">Customer</option>
               <option value="Seller">Seller</option>
             </select>
-            <label htmlFor="mySelect">Enter Password</label>
+            <label htmlFor="mySelect">Select Role</label>
           </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <button type="submit" disabled={verifyingUser ? true : false}>
