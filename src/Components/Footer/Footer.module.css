@@ -48,7 +48,7 @@
 
 h3 {
   font-weight: 200;
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   margin-bottom: 0.8rem;
   color: #ae9479;
 }
@@ -73,7 +73,7 @@ li {
 }
 
 .copyright_section {
-  max-width :120rem;
+  max-width: 120rem;
   margin: 0 auto;
   padding: 0 1.8rem;
 
@@ -87,4 +87,57 @@ li {
 
 .developed_by span {
   color: #ae9479;
+}
+
+@media screen and (max-width: 1000px) {
+  h3 {
+    font-size: 2rem;
+  }
+
+  p,
+  li {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  h3 {
+    font-size: 1.6rem;
+  }
+
+  p,
+  li {
+    font-size: 1.2rem;
+  }
+
+  .copyright_section p {
+    font-size: 0.85rem;
+  }
+  
+  .copyright_component {
+  padding: 2rem 0;
+
+  }
+}
+@media screen and (max-width: 400px) {
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p,
+  li {
+    font-size: 0.9rem;
+    font-weight: 100;
+  }
+  li{
+  margin-bottom: 0.4rem;
+
+  }
+  .copyright_section p {
+    font-size: 0.6rem;
+  }
+  
+  .copyright_component {
+    padding: 1.4rem 0;
+  
+    }
 }
