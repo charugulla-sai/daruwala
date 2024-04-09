@@ -29,7 +29,7 @@
   .categories_section {
   }
 }
-@media (min-width: 500px) and (max-width: 750px) {
+@media screen and (max-width: 750px) {
   .categories_section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -37,10 +37,10 @@
   }
 }
 
-@media screen and  (max-width: 500px){
+/* @media screen and  (max-width: 500px){
   .categories_section {
     flex-direction: column;
   align-items: center;
 
   }
-}
+} */
