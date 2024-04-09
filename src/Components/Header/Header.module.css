@@ -14,5 +14,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* justify-content: center; */
+}
+
+.router_link {
+  text-decoration: none;
+  color: #ae9479;
+}
+
+@media screen and (max-width:750px) {
+  .header_component {
+    padding: 0.6rem 1.4rem;
+  }
+
+  .header_section{
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .header_section{
+    font-size: 1.2rem;
+  }
+
+  .header_component {
+    padding: 0.5rem 1.2rem;
+  }
+}
+@media screen and (max-width:370px) {
+  .header_section{
+    font-size: 1rem;
+  padding: 0 1.6rem;
+
+  }
+  .header_component {
+    padding: 0.4rem 1rem;
+  }
 }
