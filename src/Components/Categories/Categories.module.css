@@ -27,10 +27,10 @@
   gap: 2.4rem;
 }
 
-@media screen and (max-width: 1194px) {
+/* @media screen and (max-width: 1194px) {
   .categories_section {
   }
-}
+} */
 @media screen and (max-width: 750px) {
   .categories_section {
     display: grid;
