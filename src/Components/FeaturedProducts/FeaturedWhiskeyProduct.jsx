@@ -8,10 +8,10 @@ function FeaturedWhiskeyProducts() {
       className={styles.featured_products_component}
       style={{
         marginBottom: '7.2rem',
-        backgroundImage: `url(${whiskeyBarrelsImage})`,
+        backgroundImage: `linear-gradient(to left, #00000090 40%, #00000000),url(${whiskeyBarrelsImage})`,
       }}
     >
-      <div className={styles.featured_products_section} style={{}}>
+      <div className={styles.featured_products_section}>
         <div className={styles.text_box}>
           <div className={styles.heading}>
             <h2>World of Whiskey</h2>

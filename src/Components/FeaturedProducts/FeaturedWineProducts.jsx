@@ -19,8 +19,8 @@ function FeaturedWineProducts() {
             <h4>Wines by region</h4>
             <h4>Wines by country</h4>
             <h4>Wines by grapes</h4>
-            <h4>Wines by styles</h4>
-            <h4>Wines by types</h4>
+            <h4>Wines by style</h4>
+            <h4>Wines by type</h4>
             <h4>Wines by brand</h4>
           </div>
         </div>
