@@ -5,14 +5,13 @@
 }
 
 .cart_section {
-  max-width: 84rem;
+  max-width: 120rem;
   /* height: 100%; */
   margin: 0 auto;
   /* background-color: red; */
 
   display: flex;
-  flex-direction: column;
-  /* flex-wrap: wrap; */
-  gap: 2rem;
+  flex-wrap: wrap;
+  gap: 1.8rem;
   justify-content: center;
 }

@@ -27,9 +27,10 @@ function ProductCard({
           <h1 className={styles.product_title}>{productTitle}</h1>
           <p className={styles.product_type}>{productType}</p>
           <p className={styles.product_size}>{productSize}ML</p>
+          {productQuantity && <p>qty:{productQuantity}</p>}
           <div className={styles.price_and_cart_box}>
             <p className={styles.product_price}>&#x20B9;{productPrice}</p>
-            {productQuantity && <p>qty:{productQuantity}</p>}
+            
             <button
               onClick={() => {
                 if (verify()) {
@@ -42,7 +43,7 @@ function ProductCard({
               }}
               className={styles.add_to_cart}
             >
-              {inCartPage == true ? 'Remove From Cart' : 'Add to Cart'}
+              {inCartPage == true ? 'Delete' : 'Add to Cart'}
             </button>
           </div>
         </div>
