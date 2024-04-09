@@ -1,5 +1,8 @@
 .categories_component {
   margin-bottom: 8.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .categories_heading {
@@ -19,5 +22,25 @@
   margin: 0 auto;
 
   display: flex;
-  justify-content: space-between;
+  gap: 2.4rem;
+}
+
+@media screen and (max-width: 1194px) {
+  .categories_section {
+  }
+}
+@media (min-width: 500px) and (max-width: 750px) {
+  .categories_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* gap: 2.4rem; */
+  }
+}
+
+@media screen and  (max-width: 500px){
+  .categories_section {
+    flex-direction: column;
+  align-items: center;
+
+  }
 }
