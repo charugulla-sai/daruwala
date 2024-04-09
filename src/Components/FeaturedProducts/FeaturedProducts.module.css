@@ -3,7 +3,7 @@
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 .featured_products_section {
