@@ -82,14 +82,13 @@ function SignUp() {
             <label htmlFor="password">Enter Password</label>
           </div>
           <div className={styles.selector_container}>
-            <select className={styles.selector_box} onChange={handleSelect}>
+            <select className={styles.selector_box} onChange={handleSelect} required>
+              <option value='' selected></option>
               <option value="Customer">Customer</option>
               <option value="Seller">Seller</option>
             </select>
           </div>
-          {error && (
-            <p style={{ color: 'red' }}>{error}</p>
-          )}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
           <button type="submit" disabled={verifyingUser ? true : false}>
             {verifyingUser ? <span className={styles.loader}></span> : 'Submit'}
           </button>
