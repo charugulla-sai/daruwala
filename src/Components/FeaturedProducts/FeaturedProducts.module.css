@@ -90,6 +90,9 @@
   }
 }
 @media screen and (max-width: 500px) {
+  .featured_products_section {
+    height: 30rem;
+  }
   .heading h2 {
     font-size: 2.6rem;
   }
