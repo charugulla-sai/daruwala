@@ -33,6 +33,7 @@ function Slider() {
             }}
             src={image}
             alt="slider image"
+            loading='lazy'
           />
         ))}
       </div>

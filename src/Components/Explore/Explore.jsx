@@ -10,7 +10,7 @@ export default function Explore() {
       <div className={styles.explore_section}>
         {exploreImages.map((image) => (
           <div key={image} className={styles.image_box}>
-            <img src={image} alt="explore image" />
+            <img src={image} alt="explore image" loading='lazy' />
           </div>
         ))}
       </div>
