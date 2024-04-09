@@ -1,11 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
 import styles from './Signup.module.css';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { useUserContextValues } from '../../Context/UserContext';
 
 function SignUp() {
-  const selectRef = useRef(null);
   const {
     error,
     setSignUpSubmit,
@@ -19,7 +15,6 @@ function SignUp() {
     setSelector,
   } = useUserContextValues();
 
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,12 +39,6 @@ function SignUp() {
   const handleSelect = (e) => {
     setSelector(e.target.value);
     setSignUpSubmit(false);
-  };
-
-  const handleSelectLabelClick = () => {
-    if (selectRef.current) {
-      selectRef.current.click();
-    }
   };
 
   return (
@@ -98,16 +87,13 @@ function SignUp() {
               defaultValue={''}
               className={styles.selector_box}
               onChange={handleSelect}
-              ref={selectRef}
               required
             >
               <option value=""></option>
               <option value="Customer">Customer</option>
               <option value="Seller">Seller</option>
             </select>
-            <label htmlFor="mySelect" onClick={handleSelectLabelClick}>
-              Enter Password
-            </label>
+            <label htmlFor="mySelect">Enter Password</label>
           </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
           <button type="submit" disabled={verifyingUser ? true : false}>
