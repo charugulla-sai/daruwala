@@ -12,6 +12,16 @@
 
   display: flex;
   flex-wrap: wrap;
-  gap: 1.8rem;
+  gap: 1.6rem;
   justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+  .products_section {
+    gap: 1rem;
+  }
+  .products_component{
+  padding: 0.6rem 1.2rem;
+
+  }
 }
