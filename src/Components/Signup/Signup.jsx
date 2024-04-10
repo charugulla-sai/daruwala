@@ -62,7 +62,7 @@ function SignUp() {
           <div className={styles.input_box}>
             <input
             className={styles.signup_input}
-              type="text"
+              type="email"
               name="email"
               id="email"
               value={email}

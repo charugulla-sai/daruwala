@@ -39,7 +39,7 @@ function Signin() {
           <div className={styles.input_box}>
             <input
             className={styles.signin_input}
-              type="text"
+              type="email"
               name="email"
               id="email"
               value={email}
