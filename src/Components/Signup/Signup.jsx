@@ -49,6 +49,7 @@ function SignUp() {
         <form autoComplete="off" onSubmit={handleSubmit}>
           <div className={styles.input_box}>
             <input
+            className={styles.signup_input}
               type="text"
               name="name"
               id="name"
@@ -60,6 +61,7 @@ function SignUp() {
           </div>
           <div className={styles.input_box}>
             <input
+            className={styles.signup_input}
               type="text"
               name="email"
               id="email"
@@ -71,6 +73,7 @@ function SignUp() {
           </div>
           <div className={styles.input_box}>
             <input
+            className={styles.signup_input}
               type="password"
               name="password"
               id="password"
@@ -96,7 +99,7 @@ function SignUp() {
             <label htmlFor="mySelect">Select Role</label>
           </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <button type="submit" disabled={verifyingUser ? true : false}>
+          <button className={styles.signup_button} type="submit" disabled={verifyingUser ? true : false}>
             {verifyingUser ? <span className={styles.loader}></span> : 'Submit'}
           </button>
         </form>

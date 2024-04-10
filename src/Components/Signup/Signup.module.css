@@ -48,7 +48,7 @@ label {
   transition: all 0.3s ease-in-out;
 }
 
-input {
+.signup_input {
   width: 42rem;
   height: 4.8rem;
   padding: 0 30px;
@@ -59,8 +59,8 @@ input {
   border-radius: 5px;
 }
 
-input:focus,
-input:valid {
+.signup_input:focus,
+.signup_input:valid {
   color: #311528;
   border: 2px solid #311528;
 }
@@ -71,8 +71,8 @@ select:valid {
   border: 2px solid #311528;
 }
 
-input:focus + label,
-input:valid + label {
+.signup_input:focus + label,
+.signup_input:valid + label {
   color: #311528;
   transform: translate(-15px, -35px) scale(0.8);
 
@@ -151,4 +151,23 @@ button {
   100% {
     box-shadow: 14px 0 0 -2px, 38px 0 0 2px, -14px 0 0 -2px, -38px 0 0 -2px;
   }
+}
+
+@media screen and (max-width: 650px){
+  .signup_input , .selector_box{
+    width: 32rem;
+  }
+  .signup_button{
+    width: 16rem;
+  }
+ 
+}
+@media screen and (max-width: 400px){
+  .signup_input , .selector_box{
+    width: 24rem;
+  }
+  .signup_button{
+    width: 10rem;
+  }
+ 
 }

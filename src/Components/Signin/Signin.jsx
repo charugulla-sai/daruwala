@@ -38,6 +38,7 @@ function Signin() {
         <form autoComplete="off" onSubmit={handleSubmit}>
           <div className={styles.input_box}>
             <input
+            className={styles.signin_input}
               type="text"
               name="email"
               id="email"
@@ -49,6 +50,7 @@ function Signin() {
           </div>
           <div className={styles.input_box}>
             <input
+            className={styles.signin_input}
               type="password"
               name="password"
               id="password"
@@ -61,7 +63,7 @@ function Signin() {
           {error && (
             <p style={{ color: 'red' }}>{error}</p>
           )}
-          <button type="submit" disabled={verifyingUser?true:false}>
+          <button className={styles.signin_button} type="submit" disabled={verifyingUser?true:false}>
             {verifyingUser? <span className={styles.loader}></span>: 'Submit'}
           </button>
         </form>
