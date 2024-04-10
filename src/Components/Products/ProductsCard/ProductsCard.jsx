@@ -25,7 +25,7 @@ function ProductCard({
         </div>
         <div className={styles.text_box}>
           <h1 className={styles.product_title}>
-            {productTitle.slice(0, 18)} {productTitle.length > 20 && '. .'}
+            {productTitle}
           </h1>
           <p className={styles.product_type}>{productType}</p>
           <p className={styles.product_size}>{productSize}ML</p>
@@ -45,7 +45,7 @@ function ProductCard({
               }}
               className={styles.add_to_cart}
             >
-              {inCartPage == true ? 'Remove' : 'Add to Cart'}
+              {inCartPage == true ? 'Remove' : 'Add'}
             </button>
           </div>
         </div>
