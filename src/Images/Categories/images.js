@@ -5,12 +5,12 @@ const categoriesData = [
       'https://admin.livingliquidz.com/Content/wp-content/uploads/category/2022/12/NewProject(99)20221341256.jpg',
   },
   {
-    title: 'Cigar & Cig.',
+    title: 'Beer',
     image:
-      'https://admin.livingliquidz.com/Content/wp-content/uploads/category/2023/1/NewProject-2023-01-03T193845.38320233859560.jpg',
+      'https://media.istockphoto.com/id/519728153/photo/mug-of-beer.jpg?s=612x612&w=0&k=20&c=DM6bXiXQ9edkP3tqjKiZG8ztbT0-ePgorYvgJnQLUWc=',
   },
   {
-    title: 'Spirits',
+    title: 'Whiskey',
     image:
       'https://admin.livingliquidz.com/Content/wp-content/uploads/2020/08/spirits-hd.jpg',
   },

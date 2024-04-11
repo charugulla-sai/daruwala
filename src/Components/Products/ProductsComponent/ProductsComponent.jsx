@@ -2,15 +2,19 @@ import styles from './ProductsComponent.module.css';
 import ProductCard from '../ProductsCard/ProductsCard';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 export default function ProductsComponent() {
   const [products, setProducts] = useState([]);
+  const { category } = useParams();
 
   useEffect(() => {
     const getProducts = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_SERVER}/api/products/`
+          `${import.meta.env.VITE_BACKEND_SERVER}/api/products/${
+            category !== 'new_arrival' ? `filter?category=${category}` : ''
+          }`
         );
         setProducts([...products, ...response.data]);
       } catch (err) {
@@ -28,7 +32,7 @@ export default function ProductsComponent() {
           <ProductCard
             key={product.image}
             productId={product._id}
-            productImage={product.image}
+            productImage={product.imageUrl}
             productTitle={product.title}
             productPrice={product.price}
             productSize={product.size}

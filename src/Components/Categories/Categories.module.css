@@ -23,7 +23,8 @@
   max-width: 120rem;
   margin: 0 auto;
 
-  display: flex;
+  display: grid;
+    grid-template-columns: repeat(4,1fr);
   gap: 2.4rem;
 }
 
