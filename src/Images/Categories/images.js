@@ -15,7 +15,7 @@ const categoriesData = [
       'https://admin.livingliquidz.com/Content/wp-content/uploads/2020/08/spirits-hd.jpg',
   },
   {
-    title: 'Wines',
+    title: 'Wine',
     image:
       'https://admin.livingliquidz.com/Content/wp-content/uploads/2020/08/wines-hd.jpg',
   },
