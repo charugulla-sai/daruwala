@@ -9,12 +9,14 @@ export default function ProductsComponent() {
   const { category } = useParams();
 
   useEffect(() => {
+    const controller = new AbortController();
     const getProducts = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_SERVER}/api/products/${
             category !== 'new_arrival' ? `filter?category=${category}` : ''
-          }`
+          }`,
+          { signal: controller.signal }
         );
         setProducts([...products, ...response.data]);
       } catch (err) {
@@ -23,6 +25,10 @@ export default function ProductsComponent() {
     };
 
     getProducts();
+
+    return () => {
+      return controller.abort();
+    };
   }, []);
 
   return (
