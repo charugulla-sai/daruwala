@@ -1,17 +1,20 @@
 import styles from './ProductsComponent.module.css';
 import ProductCard from '../ProductsCard/ProductsCard';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar'
 
 export default function ProductsComponent() {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
+  const topLoadRef = useRef(null);
 
   useEffect(() => {
     const controller = new AbortController();
     const getProducts = async () => {
       try {
+        topLoadRef.current.staticStart();
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_SERVER}/api/products/${
             category !== 'new_arrival' ? `filter?category=${category}` : ''
@@ -21,6 +24,8 @@ export default function ProductsComponent() {
         setProducts([...products, ...response.data]);
       } catch (err) {
         console.log(err);
+      } finally {
+        topLoadRef.current.complete();  
       }
     };
 
@@ -32,21 +37,24 @@ export default function ProductsComponent() {
   }, []);
 
   return (
-    <div className={styles.products_component}>
-      <div className={styles.products_section}>
-        {products.map((product) => (
-          <ProductCard
-            key={product.image}
-            productId={product._id}
-            productImage={product.imageUrl}
-            productTitle={product.title}
-            productPrice={product.price}
-            productSize={product.size}
-            productType={product.type}
-            inCartPage={false}
-          />
-        ))}
+    <>
+      <LoadingBar color="#f11946" ref={topLoadRef} />
+      <div className={styles.products_component}>
+        <div className={styles.products_section}>
+          {products.map((product) => (
+            <ProductCard
+              key={product.image}
+              productId={product._id}
+              productImage={product.imageUrl}
+              productTitle={product.title}
+              productPrice={product.price}
+              productSize={product.size}
+              productType={product.type}
+              inCartPage={false}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
