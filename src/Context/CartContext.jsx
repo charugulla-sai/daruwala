@@ -1,5 +1,5 @@
 import axios, { all } from 'axios';
-import { useState, createContext, useContext, useEffect } from 'react';
+import { useState, createContext, useContext, useEffect, useMemo } from 'react';
 import { useUserContextValues } from './UserContext';
 
 const cartContext = createContext();
@@ -15,6 +15,11 @@ function CartContext({ children }) {
     useState(false);
   const { userLoggedIn } = useUserContextValues();
 
+  const totalMRP = useMemo(() => {
+    const totalPrice = cartItems.reduce((sum, cartItem) => sum + ((cartItem.price)* (cartItem.quantity)), 0);
+    return totalPrice
+  }, [cartItems]);
+
   useEffect(() => {
     if (userLoggedIn) {
       getAllCartItems();
@@ -22,11 +27,14 @@ function CartContext({ children }) {
   }, [clickedOnAddOrRemoveToCart, userLoggedIn]);
 
   async function getAllCartItems() {
-    const allCartItems = await axios.get(`${import.meta.env.VITE_BACKEND_SERVER}/api/cart/`, {
-      headers: {
-        Authorization: localStorage.getItem('auth-token'),
-      },
-    });
+    const allCartItems = await axios.get(
+      `${import.meta.env.VITE_BACKEND_SERVER}/api/cart/`,
+      {
+        headers: {
+          Authorization: localStorage.getItem('auth-token'),
+        },
+      }
+    );
     setCartItems([...allCartItems.data]);
   }
 
@@ -51,11 +59,14 @@ function CartContext({ children }) {
 
   const deleteItemFromCart = async (productId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_BACKEND_SERVER}/api/cart/${productId}`, {
-        headers: {
-          Authorization: localStorage.getItem('auth-token'),
-        },
-      });
+      await axios.delete(
+        `${import.meta.env.VITE_BACKEND_SERVER}/api/cart/${productId}`,
+        {
+          headers: {
+            Authorization: localStorage.getItem('auth-token'),
+          },
+        }
+      );
       setClickedOnAddOrRemoveToCart(!clickedOnAddOrRemoveToCart);
     } catch (err) {
       console.log(err);
@@ -64,7 +75,7 @@ function CartContext({ children }) {
 
   return (
     <cartContext.Provider
-      value={{ cartItems, addItemToCart, deleteItemFromCart }}
+      value={{ cartItems, addItemToCart, deleteItemFromCart,totalMRP }}
     >
       {children}
     </cartContext.Provider>
