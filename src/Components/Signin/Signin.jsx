@@ -17,8 +17,8 @@ function Signin() {
 
   const handleAlert = () => {
     alert(`username: 'test1@gmail.com'\n password: 1234 `);
-    setEmail('test1@gmail.com')
-    setPassword('1234')
+    setEmail('test1@gmail.com');
+    setPassword('1234');
   };
 
   const handleSubmit = (e) => {
@@ -39,6 +39,7 @@ function Signin() {
   return (
     <div className={styles.signin_component}>
       <div className={styles.signin_section}>
+        {verifyingUser && <div className={styles.mask_form}></div>}
         <h1 className={styles.signin_heading}>Welcome</h1>
         <p className={styles.signin_text}>Login for a seamless experience.</p>
         <form autoComplete="off" onSubmit={handleSubmit}>
@@ -67,7 +68,9 @@ function Signin() {
             <label htmlFor="password">Enter Password</label>
           </div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <a href='#' className={styles.get_usercred} onClick={handleAlert}>Get Test user Credentials </a>
+          <a href="#" className={styles.get_usercred} onClick={handleAlert}>
+            Get Test user Credentials{' '}
+          </a>
           <button
             className={styles.signin_button}
             type="submit"

@@ -44,6 +44,7 @@ function SignUp() {
   return (
     <div className={styles.signup_component}>
       <div className={styles.signup_section}>
+      {verifyingUser && <div className={styles.signup_mask_form}></div>}
         <h1 className={styles.signup_heading}>Welcome</h1>
         <p className={styles.signup_text}>Register if you are a new user.</p>
         <form autoComplete="off" onSubmit={handleSubmit}>

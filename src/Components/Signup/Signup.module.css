@@ -10,6 +10,17 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  position: relative;
+}
+
+.signup_mask_form{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #e3dfda;
+  opacity: 0.2;
+  z-index: 100;
 }
 
 .signup_heading {
