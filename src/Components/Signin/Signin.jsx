@@ -15,6 +15,12 @@ function Signin() {
     verifyingUser,
   } = useUserContextValues();
 
+  const handleAlert = () => {
+    alert(`username: 'test1@gmail.com'\n password: 1234 `);
+    setEmail('test1@gmail.com')
+    setPassword('1234')
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSignInSubmit(true);
@@ -38,7 +44,7 @@ function Signin() {
         <form autoComplete="off" onSubmit={handleSubmit}>
           <div className={styles.input_box}>
             <input
-            className={styles.signin_input}
+              className={styles.signin_input}
               type="email"
               name="email"
               id="email"
@@ -50,7 +56,7 @@ function Signin() {
           </div>
           <div className={styles.input_box}>
             <input
-            className={styles.signin_input}
+              className={styles.signin_input}
               type="password"
               name="password"
               id="password"
@@ -60,11 +66,14 @@ function Signin() {
             />
             <label htmlFor="password">Enter Password</label>
           </div>
-          {error && (
-            <p style={{ color: 'red' }}>{error}</p>
-          )}
-          <button className={styles.signin_button} type="submit" disabled={verifyingUser?true:false}>
-            {verifyingUser? <span className={styles.loader}></span>: 'Submit'}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <a href='#' className={styles.get_usercred} onClick={handleAlert}>Get Test user Credentials </a>
+          <button
+            className={styles.signin_button}
+            type="submit"
+            disabled={verifyingUser ? true : false}
+          >
+            {verifyingUser ? <span className={styles.loader}></span> : 'Submit'}
           </button>
         </form>
       </div>

@@ -72,11 +72,14 @@ label {
 
   z-index: 2;
 }
+.get_usercred{
+  font-size: 1.8rem;
+}
 
 .signin_button {
   /* max-width: fit-content; */
   background-color: #311528;
-  color: #ededed;
+  color: #544b4b;
   width: 24rem;
   /* max-height: 3.2rem; */
   font-size: 1.8rem;
