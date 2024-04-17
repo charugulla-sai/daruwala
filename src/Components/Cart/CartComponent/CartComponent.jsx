@@ -1,34 +1,47 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ProductCard from '../../Products/ProductsCard/ProductsCard';
 import styles from './CartComponent.module.css';
 import axios from 'axios';
 import { useCartValues } from '../../../Context/CartContext';
 import CartCard from '../CartCard/CartCard';
+import LoadingBar from 'react-top-loading-bar'
 
 function CartComponent() {
   const { cartItems, totalMRP } = useCartValues();
   const [discount, setDiscount] = useState(5000);
   const [shippingFee, setShippingFee] = useState(60);
+  const [clickOnOrder, setClickOnOrder] = useState(false);
+  const topLoadRef = useRef(null);
   const amount = totalMRP - discount + shippingFee;
 
-  async function handleOrderClick() {
-    const orderApiResponse = await axios.post(
-      `${import.meta.env.VITE_BACKEND_SERVER}/order`,
-      {
-        amount: amount * 100,
-        currency: 'INR',
-        receipt: `${new Date().getTime()}`,
-      }
-    );
-    const orderId = orderApiResponse.data.id;
-    const options = {
-      key: `${import.meta.env.VITE_RAZORPAY_KEY_ID}qO`, // Enter the Key ID generated from the Dashboard
+  useEffect(() => {
+    if (clickOnOrder) {
+      topLoadRef.current.staticStart();
+      handleOrderClick();
+    }
+    // return () => {
+      //   setClickOnOrder(false);
+      // };
+    }, [clickOnOrder]);
+    
+    async function handleOrderClick() {
+      const orderApiResponse = await axios.post(
+        `${import.meta.env.VITE_BACKEND_SERVER}/order`,
+        {
+          amount: amount * 100,
+          currency: 'INR',
+          receipt: `${new Date().getTime()}`,
+        }
+      );
+      const orderId = orderApiResponse.data.id;
+      const options = {
+        key: `${import.meta.env.VITE_RAZORPAY_KEY_ID}qO`, // Enter the Key ID generated from the Dashboard
       amount: amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: 'INR',
       name: 'Daruwalas',
       description: 'Test Transaction',
       image:
-        'https://png.pngtree.com/png-clipart/20200727/original/pngtree-wine-logo-design-vector-png-image_5286637.jpg',
+      'https://png.pngtree.com/png-clipart/20200727/original/pngtree-wine-logo-design-vector-png-image_5286637.jpg',
       order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {
         alert('Payment successful');
@@ -44,6 +57,12 @@ function CartComponent() {
       theme: {
         color: '#3399cc',
       },
+      modal: {
+        ondismiss: function () {
+          setClickOnOrder(false);
+          console.log('Checkout form closed');
+        },
+      },
     };
     var rzp1 = new window.Razorpay(options);
     rzp1.on('payment.failed', function (response) {
@@ -58,10 +77,14 @@ function CartComponent() {
       // alert(response.error.metadata.payment_id);
     });
     await rzp1.open();
+    topLoadRef.current.complete();  
   }
-
+  
   return (
-    <div className={styles.cart_component}>
+   <>
+     <LoadingBar color="#fa0404" height={5} ref={topLoadRef} />
+     <div className={styles.cart_component}>
+      {clickOnOrder && <div className={styles.cart_mask_component}></div>}
       <div className={styles.cart_section}>
         {cartItems.map((cartProduct) => (
           <CartCard
@@ -103,7 +126,7 @@ function CartComponent() {
         <button
           className={styles.place_order_btn}
           onClick={(e) => {
-            handleOrderClick();
+            setClickOnOrder(true);
             e.preventDefault();
           }}
         >
@@ -111,6 +134,7 @@ function CartComponent() {
         </button>
       </div>
     </div>
+   </>
   );
 }
 
