@@ -12,7 +12,7 @@ function Card({ imageUrl, imageTitle }) {
           className={styles.card_image}
           src={imageUrl}
           alt="category image"
-          loading="lazy"
+        
         />
       </div>
       <div className={styles.card_title}>

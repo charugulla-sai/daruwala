@@ -21,7 +21,7 @@ function ProductCard({
       <div className={styles.product_section}>
         {/* {deleteItemFromCart && <p className={styles.delete_button}>X</p>} */}
         <div className={styles.product_image_box}>
-          <img src={productImage} alt="image" loading="lazy" />
+          <img src={productImage} alt="image" />
         </div>
         <div className={styles.text_box}>
           <h1 className={styles.product_title}>
