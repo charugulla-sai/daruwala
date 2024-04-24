@@ -1,0 +1,31 @@
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 26rem;
+  font-size: 1.4rem;
+  margin: 0 auto;
+  z-index: 500;
+  background-color: #de1515c7;
+  color: #fff;
+
+  padding: 0.8rem 1.6rem;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+
+  opacity: 0;
+  transform: translate(-50%, -20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.alert.show {
+  opacity: 1;
+  transform: translate(-50%, 10px);
+}
+
+.cancel_alert {
+  cursor: pointer;
+  
+}
