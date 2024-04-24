@@ -1,5 +1,6 @@
 .slide_component {
   margin-bottom: 4.8rem;
+  position: relative;
 }
 
 .slide_section {
@@ -15,4 +16,30 @@
   flex-grow: 0;
   flex-shrink: 0;
   width: 100%;
+}
+
+.left_arrow,
+.right_arrow {
+  width: 6.4rem;
+  color: #979797d1;
+  background-color: #ffffffac;
+  border-radius: 10px;
+
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  cursor: pointer;
+}
+
+/* .left_arrow svg, .right_arrow svg{
+  width: 100%;
+} */
+
+.left_arrow {
+  left: 5px;
+}
+
+.right_arrow {
+  right: 5px;
 }
