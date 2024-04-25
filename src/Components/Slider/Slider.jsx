@@ -11,14 +11,14 @@ function Slider() {
       setCurrentSliderImageIndex((prevValue) => {
         if (prevValue >= 4 && slideDirection === 1) {
           setSlideDirection(-1);
-          return 5
+          return 4
         } else if (prevValue <= 1 && slideDirection === -1) {
           setSlideDirection(1);
-          return 0
+          return 1
         }
         return prevValue + slideDirection;
       });
-      
+      console.log(currentSliderImageIndex);
     }, 5000);
     return () => clearInterval(timer);
   }, [currentSliderImageIndex, slideDirection]);
