@@ -21,14 +21,14 @@
 .left_arrow,
 .right_arrow {
   width: 6.4rem;
-  color: #979797d1;
-  background-color: #ffffffac;
+  color: #000000;
+  background-color: #ffffff88;
   border-radius: 10px;
 
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  
+
   cursor: pointer;
 }
 
@@ -42,4 +42,17 @@
 
 .right_arrow {
   right: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+  .left_arrow,
+  .right_arrow {
+    width: 4.2rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .left_arrow,
+  .right_arrow {
+    width: 2.8rem;
+  }
 }
