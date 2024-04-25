@@ -19,9 +19,6 @@ function CartComponent() {
       topLoadRef.current.staticStart();
       handleOrderClick();
     }
-    // return () => {
-    //   setClickOnOrder(false);
-    // };
   }, [clickOnOrder]);
 
   async function handleOrderClick() {
@@ -43,10 +40,18 @@ function CartComponent() {
       image:
         'https://png.pngtree.com/png-clipart/20200727/original/pngtree-wine-logo-design-vector-png-image_5286637.jpg',
       order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      handler: function (response) {
-        alert('Payment successful');
-      setClickOnOrder(false);
-
+      handler: async function (response) {
+        const validateResponse = await axios.post(
+          `${import.meta.env.VITE_RAZORPAY_KEY_ID}/order/validate`,
+          response,
+          {
+            headers: {
+              Authorization: localStorage.getItem('auth-token'),
+            },
+          }
+        );
+        alert('Pyment successful..');
+        setClickOnOrder(false);
       },
       prefill: {
         name: 'John Doe',
@@ -71,13 +76,6 @@ function CartComponent() {
       alert('Payment Failed...Please try again.');
       console.error(response.error.description);
       setClickOnOrder(false);
-      // alert(response.error.code);
-      // alert(response.error.description);
-      // alert(response.error.source);
-      // alert(response.error.step);
-      // alert(response.error.reason);
-      // alert(response.error.metadata.order_id);
-      // alert(response.error.metadata.payment_id);
     });
     await rzp1.open();
     topLoadRef.current.complete();
