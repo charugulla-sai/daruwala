@@ -9,12 +9,12 @@ function Slider() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSliderImageIndex((prevValue) => {
-        if (prevValue >= 4 && slideDirection === 1) {
+        if (prevValue > 4 && slideDirection === 1) {
           setSlideDirection(-1);
-          return 4
-        } else if (prevValue <= 1 && slideDirection === -1) {
+          return 4;
+        } else if (prevValue < 1 && slideDirection === -1) {
           setSlideDirection(1);
-          return 1
+          return 1;
         }
         return prevValue + slideDirection;
       });
@@ -37,33 +37,35 @@ function Slider() {
           />
         ))}
       </div>
-      <div
-        className={styles.left_arrow}
-        onClick={() => {
-          setCurrentSliderImageIndex((prevValue) => {
-            // Go to the first image and stop
-            if (prevValue <= 1) {
-              return 0;
-            }
-            return prevValue - 1;
-          });
-        }}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
+      {currentSliderImageIndex >= 1 && (
+        <div
+          className={styles.left_arrow}
+          onClick={() => {
+            setCurrentSliderImageIndex((prevValue) => {
+              // Go to the first image and stop
+              if (prevValue <= 1) {
+                return 0;
+              }
+              return prevValue - 1;
+            });
+          }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M15.75 19.5 8.25 12l7.5-7.5"
-          />
-        </svg>
-      </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5 8.25 12l7.5-7.5"
+            />
+          </svg>
+        </div>
+      )}
       {currentSliderImageIndex <= 4 && (
         <div
           className={styles.right_arrow}
