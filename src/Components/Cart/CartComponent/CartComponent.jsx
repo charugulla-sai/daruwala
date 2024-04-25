@@ -45,6 +45,8 @@ function CartComponent() {
       order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: function (response) {
         alert('Payment successful');
+      setClickOnOrder(false);
+
       },
       prefill: {
         name: 'John Doe',
@@ -68,6 +70,7 @@ function CartComponent() {
     rzp1.on('payment.failed', function (response) {
       alert('Payment Failed...Please try again.');
       console.error(response.error.description);
+      setClickOnOrder(false);
       // alert(response.error.code);
       // alert(response.error.description);
       // alert(response.error.source);
