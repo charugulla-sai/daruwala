@@ -25,8 +25,9 @@ export default function OrderComponent() {
   return (
     <div className={styles.order_container}>
       <div className={styles.orders_section}>
-        {orderItems.map((ordItem) => (
+        {orderItems.map((ordItem,index) => (
           <OrderCard
+          key={index}
             orderId={ordItem.orderId}
             paymentId={ordItem.paymentId}
             products={ordItem.products}

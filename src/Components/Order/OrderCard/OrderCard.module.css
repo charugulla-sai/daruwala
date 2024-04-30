@@ -13,10 +13,14 @@
 }
 .order_details {
   display: flex;
-  background-color: #e3dfda;
+  background-color: #3115280a;
   justify-content: space-between;
 
   margin-bottom: 1.6rem;
+
+  border: 1px #31152862 solid;
+  border-radius: 5px;
+  padding: 1rem;
 }
 
 .order_id {

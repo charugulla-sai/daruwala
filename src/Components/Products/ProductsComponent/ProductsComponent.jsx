@@ -41,9 +41,9 @@ export default function ProductsComponent() {
       <LoadingBar color="#fa0404" height={5} ref={topLoadRef} />
       <div className={styles.products_component}>
         <div className={styles.products_section}>
-          {products.map((product) => (
+          {products.map((product,index) => (
             <ProductCard
-              key={product.image}
+              key={index}
               productId={product._id}
               productImage={product.imageUrl}
               productTitle={product.title}

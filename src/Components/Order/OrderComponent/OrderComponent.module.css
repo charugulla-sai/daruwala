@@ -1,3 +1,7 @@
+.order_container{
+  margin: 1.6rem 0;
+}
+
 .orders_section{
   display: flex;
   flex-direction: column;

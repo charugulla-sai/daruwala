@@ -101,9 +101,9 @@ function CartComponent() {
       <div className={styles.cart_component}>
         {clickOnOrder && <div className={styles.cart_mask_component}></div>}
         <div className={styles.cart_section}>
-          {cartItems.map((cartProduct) => (
+          {cartItems.map((cartProduct,index) => (
             <CartCard
-              key={cartProduct.image}
+              key={index}
               productId={cartProduct._id}
               productImage={cartProduct.imageUrl}
               productTitle={cartProduct.title}
