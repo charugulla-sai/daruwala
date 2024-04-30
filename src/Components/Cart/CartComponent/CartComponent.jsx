@@ -8,7 +8,7 @@ import LoadingBar from 'react-top-loading-bar';
 
 function CartComponent() {
   const { cartItems, totalMRP } = useCartValues();
-  const [discount, setDiscount] = useState(5000);
+  const [discount, setDiscount] = useState(totalMRP * 0.1);
   const [shippingFee, setShippingFee] = useState(60);
   const [clickOnOrder, setClickOnOrder] = useState(false);
   const topLoadRef = useRef(null);
@@ -28,6 +28,11 @@ function CartComponent() {
         amount: amount * 100,
         currency: 'INR',
         receipt: `${new Date().getTime()}`,
+      },
+      {
+        headers: {
+          Authorization: localStorage.getItem('auth-token'),
+        },
       }
     );
     const orderId = orderApiResponse.data.id;
@@ -41,16 +46,24 @@ function CartComponent() {
         'https://png.pngtree.com/png-clipart/20200727/original/pngtree-wine-logo-design-vector-png-image_5286637.jpg',
       order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       handler: async function (response) {
-        const validateResponse = await axios.post(
-          `${import.meta.env.VITE_RAZORPAY_KEY_ID}/order/validate`,
-          response,
-          {
-            headers: {
-              Authorization: localStorage.getItem('auth-token'),
+        try {
+          const validateResponse = await axios.post(
+            `${import.meta.env.VITE_BACKEND_SERVER}/order/validate`,
+            {
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
             },
-          }
-        );
-        alert('Pyment successful..');
+            {
+              headers: {
+                Authorization: localStorage.getItem('auth-token'),
+              },
+            }
+          );
+          alert('Pyment successful..');
+        } catch (err) {
+          console.log(err);
+        }
         setClickOnOrder(false);
       },
       prefill: {

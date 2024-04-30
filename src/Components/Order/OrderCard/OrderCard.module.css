@@ -1,0 +1,32 @@
+.order_card {
+  max-width: 64rem;
+  background-color: #fff;
+
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.order_card_section {
+  padding: 0.8rem 1.6rem;
+  
+  
+}
+.order_details {
+  display: flex;
+  background-color: #e3dfda;
+  justify-content: space-between;
+
+  margin-bottom: 1.6rem;
+}
+
+.order_id {
+}
+
+.payment_id {
+}
+
+.products_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}

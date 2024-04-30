@@ -17,6 +17,11 @@ function Navbar() {
               Cart <span>{cartItems.length}</span>
             </Link>
           </h3>
+          <h3>
+            <Link className={styles.router_link} to="/order">
+              Orders
+            </Link>
+          </h3>
           <h3
             className="router_link"
             onClick={() => {

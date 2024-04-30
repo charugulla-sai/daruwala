@@ -6,6 +6,7 @@ import FeaturedWineProducts from './Components/FeaturedProducts/FeaturedWineProd
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import MoreServices from './Components/MoreServices/MoreServices';
+import OrderComponent from './Components/Order/OrderComponent/OrderComponent';
 import ProductsComponent from './Components/Products/ProductsComponent/ProductsComponent';
 import Signin from './Components/Signin/Signin';
 import SignUp from './Components/Signup/Signup';
@@ -52,6 +53,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/order" element={<OrderComponent />} />
             </Routes>
             <Footer />
           </CartContext>
