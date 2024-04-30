@@ -21,12 +21,10 @@ function CartCard({
       <div className={styles.cart_section}>
         {/* {deleteItemFromCart && <p className={styles.delete_button}>X</p>} */}
         <div className={styles.cart_image_box}>
-          <img src={productImage} alt="image"/>
+          <img src={productImage} alt="image" />
         </div>
         <div className={styles.cart_text_box}>
-          <h1 className={styles.cart_product_title}>
-            {productTitle}
-          </h1>
+          <h1 className={styles.cart_product_title}>{productTitle}</h1>
           <p className={styles.cart_product_type}>{productType}</p>
           <p className={styles.cart_product_size}>{productSize}ML</p>
           {productQuantity && <p>qty:{productQuantity}</p>}
@@ -45,7 +43,7 @@ function CartCard({
               }}
               className={styles.add_to_cart}
             >
-              {inCartPage == true ? 'Remove' : 'Add'}
+              {inCartPage == true ? 'Remove' : 'Add to order again'}
             </button>
           </div>
         </div>
