@@ -30,6 +30,8 @@ export default function OrderComponent() {
             orderId={ordItem.orderId}
             paymentId={ordItem.paymentId}
             products={ordItem.products}
+            orderAmount={ordItem.orderAmount}
+            orderDate={ordItem.orderDate}
           />
         ))}
       </div>

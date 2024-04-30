@@ -1,14 +1,14 @@
 import CartCard from '../../Cart/CartCard/CartCard';
 import styles from './OrderCard.module.css';
 
-export default function OrderCard({ orderId, paymentId, products }) {
+export default function OrderCard({ orderId, paymentId, products,orderAmount,orderDate }) {
   return (
     <div className={styles.order_card}>
       <div className={styles.order_card_section}>
         <div className={styles.order_details}>
           <div>
-            <p className={styles.order_date}>Order Placed: 30 April 2024</p>
-            <p className={styles.amount_paid}>Total amount paid: 1700</p>
+            <p className={styles.order_date}>Order Placed: {orderDate}</p>
+            <p className={styles.amount_paid}>Total amount paid: {orderAmount}</p>
           </div>
           <div className={styles.id_box}>
             <p className={styles.order_id}>Order Id: {orderId}</p>
