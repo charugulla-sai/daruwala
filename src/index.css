@@ -16,4 +16,6 @@ body {
   background-color: #e3dfda;
   /* padding: 0 2.4rem; */
 }
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

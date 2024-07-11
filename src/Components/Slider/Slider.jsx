@@ -18,7 +18,6 @@ function Slider() {
         }
         return prevValue + slideDirection;
       });
-      console.log(currentSliderImageIndex);
     }, 5000);
     return () => clearInterval(timer);
   }, [currentSliderImageIndex, slideDirection]);
@@ -56,7 +55,7 @@ function Slider() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-full"
           >
             <path
               strokeLinecap="round"
@@ -85,7 +84,7 @@ function Slider() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-full"
           >
             <path
               strokeLinecap="round"

@@ -21,6 +21,7 @@
 .left_arrow,
 .right_arrow {
   width: 6.4rem;
+  height: 6.4rem;
   color: #000000;
   background-color: #ffffff88;
   border-radius: 10px;
