@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
 import styles from "./Search.module.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../Redux/Slices/searchSlice";
+import { TailSpin } from "react-loader-spinner";
 
 export default function Search() {
   const [searchActive, setSearchActive] = useState(false);
   const [searchItems, setSearchItems] = useState([]);
-  const [searchText, setSearchText] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const searchDispatch = useDispatch();
 
   useEffect(() => {
     const controller = new AbortController();
+    setIsLoading(true);
     async function getSearchItems() {
       const response = await axios.get(
         `${
@@ -16,9 +23,11 @@ export default function Search() {
         }/api/products/filter?title=${searchText}`,
         { signal: controller.signal }
       );
+      setIsLoading(false);
       setSearchItems(response.data);
     }
     const timeout = setTimeout(() => {
+      setIsLoading(true);
       searchText?.length > 2 && getSearchItems();
     }, 3000);
 
@@ -42,6 +51,7 @@ export default function Search() {
         <input
           type="text"
           placeholder="Search items"
+          value={searchText}
           onChange={handleSearchText}
           onFocus={() => {
             setSearchActive(true);
@@ -68,41 +78,63 @@ export default function Search() {
           </svg>
         </button>
       </div>
-      {searchText && (
-        <div className={styles.searched_items}>
-          {searchItems.map((item) => (
-            <div
-              className={`${styles.searched_item} bg-white flex items-center justify-start gap-2 `}
-            >
-              <div className="w-[48px] mb-[18px]">
-                <img className="w-full" src={item.imageUrl} />
-              </div>
-              <div>
-                <div className="font-bold">{item.title}</div>
-                <div className="flex gap-4">
-                  <div className="flex items-center gap-[2px]">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      class="size-6"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                    {item.reviews[0] ? rating : 0}
+      {searchText.length >2 && (
+        <div
+          className={`${styles.searched_items} bg-white flex justify-center`}
+        >
+          {isLoading ? (
+            <TailSpin
+              visible={true}
+              height="50"
+              width="50"
+              color="#ae9479"
+              ariaLabel="tail-spin-loading"
+              radius="1"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
+          ) : (
+            <div>
+              {searchItems.map((item) => (
+                <Link
+                  className={`${styles.searched_item} bg-white flex items-center  gap-2 `}
+                  onClick={() => {
+                    setSearchText('')
+                    searchDispatch(getProduct(item._id));
+                  }}
+                  to={`product/${item._id}`}
+                >
+                  <div className="w-[48px] mb-[18px]">
+                    <img className="w-full" src={item.imageUrl} />
                   </div>
-                  <span>&#x2022; </span>
-                  <div className="capitalize">{item.category}</div>
-                  <span>&#x2022; </span>
-                  <div className="">{item.type}</div>
-                </div>
-              </div>
+                  <div>
+                    <div className="font-bold">{item.title}</div>
+                    <div className="flex gap-4">
+                      <div className="flex items-center gap-[2px]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          class="size-6"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        {item.reviews.length > 0 ? item.reviews[0].rating : 0}
+                      </div>
+                      <span>&#x2022; </span>
+                      <div className="capitalize">{item.category}</div>
+                      <span>&#x2022; </span>
+                      <div className="">{item.type}</div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       )}
     </div>
