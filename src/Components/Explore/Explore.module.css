@@ -32,6 +32,8 @@
 
 .explore_title {
   margin-bottom: 1.6rem;
+  font-size: 2.4rem;
+
 }
 
 @media screen and (max-width: 800px) {

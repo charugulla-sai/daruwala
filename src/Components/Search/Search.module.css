@@ -1,5 +1,5 @@
 .search_form_container {
-  width: 320px;
+  min-width: 100px;
   position: relative;
   z-index: 10;
 }
@@ -34,19 +34,16 @@
   width: 100%;
   max-height: 90vh;
   overflow-y: scroll;
-  
-  
+
   position: absolute;
-  
 }
 
-.searched_item{
+.searched_item {
   padding: 2px;
   background: #fff;
   transition: all 0.1s ease-in-out;
   border: 2px solid transparent;
   opacity: 0.97;
-
 }
 .searched_item:hover {
   border: 2px solid #ae9479;

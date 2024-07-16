@@ -7,13 +7,17 @@ function Header() {
   return (
     <div className={styles.header_component}>
       <div className={styles.header_section}>
-        <h1>
+        <h1 className="max-w-[100px] text-5xl font-extrabold">
           <Link className={styles.router_link} to="/">
             Daruwala
           </Link>
         </h1>
-        <Search />
-        <Navbar />
+        <div className={styles.header_search_component}>
+          <Search />
+        </div>
+        <div className="max-w-[400px]">
+          <Navbar />
+        </div>
       </div>
     </div>
   );
