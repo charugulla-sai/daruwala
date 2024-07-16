@@ -7,7 +7,7 @@ function Header() {
   return (
     <div className={styles.header_component}>
       <div className={styles.header_section}>
-        <h1 className="max-w-[100px] text-5xl font-extrabold">
+        <h1 className="min-w-[100px] font-extrabold">
           <Link className={styles.router_link} to="/">
             Daruwala
           </Link>
@@ -15,7 +15,7 @@ function Header() {
         <div className={styles.header_search_component}>
           <Search />
         </div>
-        <div className="max-w-[400px]">
+        <div className="  max-w-[400px]">
           <Navbar />
         </div>
       </div>

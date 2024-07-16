@@ -1,5 +1,5 @@
 .search_form_container {
-  min-width: 100px;
+  min-width: 180px;
   position: relative;
   z-index: 10;
 }
